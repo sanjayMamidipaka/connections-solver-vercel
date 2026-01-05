@@ -16,7 +16,7 @@ class TransformerSolver:
         self.successful: List[Set[str]] = []
         self.failed: List[Set[str]] = []
         self.one_away: List[Set[str]] = []
-        self.beam_width: int = 5
+        self.beam_width: int = 10
         self.alpha: float = 0.5
 
     def update_state(
