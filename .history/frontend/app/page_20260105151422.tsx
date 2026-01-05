@@ -29,7 +29,7 @@ export default function Home() {
     setResults(null)
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/solve`, {
+      const response = await fetch('${process.env.NEXT_PUBLIC_API_URL}/solve', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
