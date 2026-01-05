@@ -1,0 +1,18 @@
+# Exclude local python environments
+venv/
+.venv/
+env/
+
+# Exclude Javascript dependencies (for your future React section)
+frontend/node_modules/
+
+# Exclude cache and IDE files
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+.DS_Store
+
+# Exclude git history
+.git
+.gitignore
