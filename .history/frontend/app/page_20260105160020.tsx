@@ -125,7 +125,7 @@ export default function Home() {
   return (
     <div className="app-container">
       <div className="header">
-        <h1>Connections AI Solver</h1>
+        <h1>CONNECTIONS SOLVER AI</h1>
         <div className="user-icon">👤</div>
       </div>
       
