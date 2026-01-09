@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 interface SolveResponse {
   rank: number
@@ -8,13 +8,15 @@ interface SolveResponse {
   groups: string[][]
 }
 
+const INITIAL_WORDS = ["coil", "reel", "scan", "tackle", "crank", "drear", "grump", "sack", "blitz", "block", "etail", "wind", "copy", "edition", "issue", "print"]
+
 const CATEGORY_COLORS = ['#fbbf24', '#4ade80', '#60a5fa', '#a78bfa'] // Yellow, Green, Blue, Purple
 
 export default function Home() {
   const [loading, setLoading] = useState(false)
   const [results, setResults] = useState<SolveResponse[] | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [words, setWords] = useState<string[]>([])
+  const [words, setWords] = useState<string[]>(INITIAL_WORDS)
   const [newWord, setNewWord] = useState('')
   const [selectedWords, setSelectedWords] = useState<string[]>([])
   const [previousGuesses, setPreviousGuesses] = useState<string[][]>([])
@@ -30,6 +32,7 @@ export default function Home() {
         setWords(data.words);
         setError(null);
       } else {
+        setWords(data)
         throw new Error(data.error);
       }
     } catch (err) {
@@ -138,10 +141,6 @@ export default function Home() {
     return CATEGORY_COLORS[rank - 1] || CATEGORY_COLORS[0]
   }
 
-  useEffect(() => {
-    fetchTodayPuzzle();
-  }, []);
-
   return (
     <div className="app-container">
       <div className="header">
@@ -155,7 +154,14 @@ export default function Home() {
           
           <div className="section">
             <h3 className="section-title">TODAY'S WORDS:</h3>
-            
+            <button 
+              className="fetch-btn" 
+              onClick={fetchTodayPuzzle}
+              disabled={loading}
+            >
+              {loading ? 'Fetching...' : 'Fetch Today\'s Puzzle'}
+            </button>
+
             <div className="word-grid">
               {words.map((word, index) => {
                 const isSelected = selectedWords.includes(word)

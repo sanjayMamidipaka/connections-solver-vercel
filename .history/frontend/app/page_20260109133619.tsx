@@ -155,6 +155,13 @@ export default function Home() {
           
           <div className="section">
             <h3 className="section-title">TODAY'S WORDS:</h3>
+            <button 
+              className="fetch-btn" 
+              onClick={fetchTodayPuzzle}
+              disabled={loading}
+            >
+              {loading ? 'Fetching...' : 'Fetch Today\'s Puzzle'}
+            </button>
             
             <div className="word-grid">
               {words.map((word, index) => {

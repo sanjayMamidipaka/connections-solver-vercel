@@ -14,7 +14,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [results, setResults] = useState<SolveResponse[] | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [words, setWords] = useState<string[]>([])
+  const [words, setWords] = useState<string[]>(INITIAL_WORDS)
   const [newWord, setNewWord] = useState('')
   const [selectedWords, setSelectedWords] = useState<string[]>([])
   const [previousGuesses, setPreviousGuesses] = useState<string[][]>([])
@@ -155,6 +155,13 @@ export default function Home() {
           
           <div className="section">
             <h3 className="section-title">TODAY'S WORDS:</h3>
+            <button 
+              className="fetch-btn" 
+              onClick={fetchTodayPuzzle}
+              disabled={loading}
+            >
+              {loading ? 'Fetching...' : 'Fetch Today\'s Puzzle'}
+            </button>
             
             <div className="word-grid">
               {words.map((word, index) => {

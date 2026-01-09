@@ -152,9 +152,6 @@ export default function Home() {
       <div className="main-content">
         <div className="panel inputs-panel">
           <h2 className="panel-title">INPUTS</h2>
-          
-          <div className="section">
-            <h3 className="section-title">TODAY'S WORDS:</h3>
             
             <div className="word-grid">
               {words.map((word, index) => {
